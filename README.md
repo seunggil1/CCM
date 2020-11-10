@@ -8,7 +8,7 @@
 editor/react/origianl 디렉토리에 react js 클래스를 선언하고
 아래의 명령어를 통해 브라우저가 이해할 수 있는 js 파일로
 editor/react 디렉토리에 컴파일 한다
-<!-- npx babel --watch editor/react/original  --out-dir editor/react --presets react-app/prod -->
+npx babel --watch editor/react  --out-dir src/js/react --presets react-app/prod
 
 - Node.js >= 14
 - CUDA >= 11.1

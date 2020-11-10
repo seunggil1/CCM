@@ -1,156 +1,85 @@
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Problem = function (_React$Component) {
-  _inherits(Problem, _React$Component);
-
-  function Problem(props) {
-    _classCallCheck(this, Problem);
-
-    var _this = _possibleConstructorReturn(this, (Problem.__proto__ || Object.getPrototypeOf(Problem)).call(this, props));
-
-    _this.state = {
+class Problem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       success: false,
-      result: "",
-      try: false
+      result : "",
+      try: false,
     };
 
-    _this.check = _this.check.bind(_this);
-    return _this;
+    this.check = this.check.bind(this);
   }
 
-  _createClass(Problem, [{
-    key: "check",
-    value: function check() {
-      var _this2 = this;
-
-      var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function () {
-        if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-          if (xmlhttp.status == 200) {
-            var resultJson = JSON.parse(xmlhttp.responseText);
-            _this2.setState({
-              success: resultJson.success,
-              result: resultJson.output,
-              try: true
-            });
-          } else alert('something else other than 200 was returned');
+  check(){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = () => {
+      if (xmlhttp.readyState == XMLHttpRequest.DONE){
+        if (xmlhttp.status == 200){
+          var resultJson = JSON.parse(xmlhttp.responseText);
+          this.setState({
+            success : resultJson.success,
+            result : resultJson.output,
+            try : true,
+          });
         }
-      };
-
-      xmlhttp.open("POST", "url");
-      xmlhttp.send({
-        problemNumber: "??",
-        caseNumber: this.props.index,
-        language: "",
-        code: ""
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var tried = React.createElement("i", null);
-      var imgTag,
-          color = "black";
-      if (this.state.try) {
-        if (this.state.success) {
-          tried = React.createElement("i", { "class": "fas fa-check" });
-          color = "green";
-        } else {
-          tried = React.createElement("i", { "class": "fas fa-times" });
-          color = "red";
-        }
+        else alert('something else other than 200 was returned');
       }
-      if (this.props.img != null) {
-        imgTag = React.createElement("img", { src: this.props.img, width: "100%" });
+    };
+
+    xmlhttp.open("POST", "url");
+    xmlhttp.send({
+      problemNumber : "??",
+      caseNumber : this.props.index,
+      language : "",
+      code : "",
+    });
+  }
+
+  render() {
+    var tried = <i></i>;
+    var imgTag,color = "black";
+    if(this.state.try){
+      if(this.state.success){
+        tried = <i class="fas fa-check"></i>;
+        color = "green";
       }
-
-      return React.createElement(
-        "div",
-        { style: { width: '400px' } },
-        React.createElement(
-          "div",
-          { "class": color },
-          React.createElement(
-            "span",
-            null,
-            "\uC608\uC81C ",
-            this.props.index
-          ),
-          "\xA0",
-          tried,
-          React.createElement("i", { "class": "fas fa-play", style: { float: 'right' }, onClick: this.check })
-        ),
-        React.createElement(
-          "div",
-          null,
-          imgTag
-        ),
-        React.createElement(
-          "div",
-          { "class": "horizontal" },
-          React.createElement(
-            "div",
-            { "class": "box rightLine" },
-            React.createElement(
-              "div",
-              { "class": "boxTitle" },
-              "\uC785\uB825"
-            ),
-            React.createElement(
-              "div",
-              { "class": "boxContent" },
-              this.props.input.split('\n').map(function (line) {
-                return React.createElement(
-                  "span",
-                  null,
-                  line,
-                  React.createElement("br", null)
-                );
-              })
-            )
-          ),
-          React.createElement(
-            "div",
-            { "class": "vertical" },
-            React.createElement(
-              "div",
-              { "class": "box" },
-              React.createElement(
-                "div",
-                { "class": "boxTitle" },
-                "\uCD9C\uB825"
-              ),
-              React.createElement(
-                "div",
-                { "class": "boxContent" },
-                this.props.output
-              )
-            ),
-            React.createElement(
-              "div",
-              { "class": "box" },
-              React.createElement(
-                "div",
-                { "class": "boxTitle" },
-                "\uACB0\uACFC"
-              ),
-              React.createElement(
-                "div",
-                { "class": "boxContent" },
-                this.state.result
-              )
-            )
-          )
-        )
-      );
+      else{
+        tried = <i class="fas fa-times"></i>;
+        color = "red";
+      }
     }
-  }]);
+    if(this.props.img != null){
+      imgTag = <img src={this.props.img} width="100%"/>
+    }
 
-  return Problem;
-}(React.Component);
+    return (
+      <div style={{width: '400px'}}>
+        <div class={color}>
+          <span>예제 {this.props.index}</span>&nbsp;
+          {tried}
+          <i class="fas fa-play" style={{float: 'right'}} onClick={this.check}></i>
+        </div>
+        <div>{imgTag}</div>
+        <div class="horizontal">
+          <div class="box rightLine">
+            <div class="boxTitle">입력</div>
+            <div class="boxContent">{
+              this.props.input.split('\n').map( 
+                line => (<span>{line}<br/></span>))
+            }</div>
+          </div>
+          <div class="vertical">
+            <div class="box">
+              <div class="boxTitle">출력</div>
+              <div class="boxContent">{this.props.output}</div>
+            </div>
+            <div class="box">
+              <div class="boxTitle">결과</div>
+              <div class="boxContent">{this.state.result}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}

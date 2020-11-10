@@ -42,6 +42,7 @@
 		<script src="../node_modules/monaco-editor/min/vs/editor/editor.main.js"></script>
     
     <script src="./react/liktbutton.js"></script>
+    <script src="./react/problem.js"></script>
     <script src="./react/editorOption.js"></script>
     <script type="text/babel">
       const element = <EditorOption donwloadName="test.js"/>;
@@ -88,7 +89,13 @@
               title: '실행',
               tooltip: '여기서 실행해보세요',
               isClosable: false,
-              component: 'LikeButton',
+              component: 'Problem',
+              props : {
+                index :"1" ,
+                img :"https://miro.medium.com/max/12032/1*1X0-98EiQNkwBJj2vnTTqQ.jpeg" ,
+                input :"1\n2\n3\n4" ,
+                output :"1234",
+              }
             }
           ]
         }]
@@ -102,7 +109,7 @@
       myLayout.registerComponent( 'editor',function(container,state){
         container.getElement().html( '<div id="editor1" style="height: 100%; width:100%;"></div>');
       });
-      myLayout.registerComponent( 'LikeButton', LikeButton);
+      myLayout.registerComponent( 'Problem', Problem);
 
       myLayout.on('tabCreated', function( tab ){
         tab.element.attr('title', tab.contentItem.config.tooltip);
