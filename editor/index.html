@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link type="text/css" rel="stylesheet" href="../node_modules/golden-layout/src/css/goldenlayout-base.css" />
+    <link type="text/css" rel="stylesheet" href="../node_modules/golden-layout/src/css/goldenlayout-dark-theme.css" />
+
+    <link rel="stylesheet" data-name="vs/editor/editor.main" href="../node_modules/monaco-editor/min/vs/editor/editor.main.css"/>
+    <style>
+      @font-face{
+				font-family: "Sansita Swashed";
+				src: url("./SansitaSwashed-VariableFont_wght.ttf") format("truetype");
+			}
+      
+      h2{
+        font: 14px Arial, sans-serif;
+        color:#fff;
+        padding: 10px;
+        text-align: center;
+      }
+      #editor_option{
+        position: absolute;
+        top: 0px;
+        left: 15px;
+        color: white;
+				font-size: 25px;
+      }
+    </style>
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../node_modules/golden-layout/dist/goldenlayout.min.js"></script>
+    
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+		<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    
+    <script>
+			var require = { paths: { vs: '../node_modules/monaco-editor/min/vs' } };
+		</script>
+		<script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
+		<script src="../node_modules/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
+		<script src="../node_modules/monaco-editor/min/vs/editor/editor.main.js"></script>
+    
+    <script src="./react/liktbutton.js"></script>
+    <script src="./react/editorOption.js"></script>
+    <script type="text/babel">
+      const element = <EditorOption donwloadName="test.js"/>;
+      setTimeout(() => {
+        ReactDOM.render(
+          element,
+          document.getElementById('editor_option')
+        );
+      },2000);
+    </script>
+    <script>
+      var editorComponent = {
+        type:'component',
+        componentName: 'editor',
+        title: '코드이게 이렇게 길어지면?',
+        tooltip: '여기서 코드를 작성하세요',
+        isClosable: false,
+        // componentState: { text: 'Component 2' }
+      };
+      var config = {
+        settings:{
+          showPopoutIcon: false,
+          showMaximiseIcon: false,
+          showCloseIcon: false,
+          selectionEnabled: true,
+        },
+        dimensions: {
+          headerHeight: 34,
+        },
+        content: [{
+          type: 'stack', // Stack
+          content: [
+            editorComponent,
+            {
+              type:'component',
+              componentName: 'example',
+              title: '문제',
+              tooltip: '문제를 여기서 확인하세요',
+              isClosable: false,
+              componentState: { list: 'Component 1' }
+            },
+            {
+              type:'react-component',
+              title: '실행',
+              tooltip: '여기서 실행해보세요',
+              isClosable: false,
+              component: 'LikeButton',
+            }
+          ]
+        }]
+      };
+
+      var myLayout = new GoldenLayout( config );
+
+      myLayout.registerComponent( 'example', function( container, state ){
+        container.getElement().html( '<h2>' + state.text + '</h2>');
+      });
+      myLayout.registerComponent( 'editor',function(container,state){
+        container.getElement().html( '<div id="editor1" style="height: 100%; width:100%;"></div>');
+      });
+      myLayout.registerComponent( 'LikeButton', LikeButton);
+
+      myLayout.on('tabCreated', function( tab ){
+        tab.element.attr('title', tab.contentItem.config.tooltip);
+      });
+      myLayout.on('initialised', function( tab ){
+        createEditor(['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'));
+      });
+      myLayout.on('stateChanged',function(some){
+        // console.log(some);
+        setTimeout( () => createEditor( editor1.getValue() ),1000);
+      });
+
+      myLayout.init();
+    </script>
+    <script>
+      var editor1;
+      function createEditor(value){
+				editor1 = monaco.editor.create(
+					document.getElementById('editor1'),
+					{
+						value: value,
+						language: 'javascript',
+						// theme: 'vs',
+						theme: 'vs-dark',
+						tabSize: 2,
+						fontFamily: 'Sansita Swashed',
+						fontSize: 20,
+					}
+        );
+        var div = document.createElement("div");
+        div.setAttribute("id","editor_option");
+        document.getElementById('editor1').appendChild(div);
+      }
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
+<!-- http://golden-layout.com/ -->
