@@ -11,6 +11,11 @@
 
 ## 설치방법
 
+npm install monaco-editor
+npm install golden-layout
+npm install child_process
+npm install babel-cli@6 babel-preset-react-app@3
+
 ### Windows
 
 설치 과정을 순서대로 작성하세요.
@@ -27,9 +32,8 @@ $ apt install packageName
 
 ## 참여인원
 
-- 이름1, 이메일1, 역할1
-- 이름2, 이메일2, 역할2
-- 이름3, 이메일3, 역할3
+- 이창주, busbtvi@naver.com, 메인 개발자
+- 강승길, 이메일2, 역할2
 
 ## 참고
 
