@@ -1,3 +1,10 @@
+body{
+  color: white;
+}
+.total{
+  width: 600px;
+  border: 1px #eee solid;
+}
 .horizontal{
   display: grid; grid-template-columns: 50% 50%;
   min-height: 200px;
@@ -10,13 +17,13 @@
   grid-template-rows: 30px auto;
 }
 .boxContent{
-  background-color: lightgrey;
+  /* background-color: lightgrey; */
   height: auto;
 }
 .boxTitle{
-  border-bottom: 1px black solid;
+  border-bottom: 1px #eee solid;
   text-align: center;
 }
-.rightLine{ border-right: 1px black solid; }
+.rightLine{ border-right: 1px #eee solid; }
 .green{ color: #3ddc84; }
 .red{ color: red; }

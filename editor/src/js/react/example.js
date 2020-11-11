@@ -72,7 +72,7 @@ var Example = function (_React$Component) {
 
       return React.createElement(
         "div",
-        { style: { width: '400px' } },
+        { "class": "total" },
         React.createElement(
           "div",
           { "class": color },

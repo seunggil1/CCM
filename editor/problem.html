@@ -4,8 +4,16 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
-		<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
+      body{
+        font-family: 'Noto Sans KR', sans-serif;
+      }
+      .total{
+        width: 600px;
+        border: 1px #eee solid;
+      }
       .horizontal{
         display: grid; grid-template-columns: 50% 50%;
         min-height: 200px;
@@ -19,19 +27,19 @@
       }
       .boxContent{
         background-color: lightgrey;
-        height: auto;
       }
       .boxTitle{
-        border-bottom: 1px black solid;
+        border: 1px #eee solid;
         text-align: center;
       }
-      .rightLine{ border-right: 1px black solid; }
+      .rightLine{ border-right: 1px #eee solid; }
       .green{ color: #3ddc84; }
       .red{ color: red; }
     </style>
   </head>
   <body>
     <div id="react"></div>
+    <div id="react1"></div>
     <script type="text/babel">
       class Problem extends React.Component {
         constructor(props) {
@@ -46,28 +54,33 @@
         }
 
         check(){
-          var xmlhttp = new XMLHttpRequest();
-          xmlhttp.onreadystatechange = () => {
-            if (xmlhttp.readyState == XMLHttpRequest.DONE){
-              if (xmlhttp.status == 200){
-                var resultJson = JSON.parse(xmlhttp.responseText);
-                this.setState({
-                  success : resultJson.success,
-                  result : resultJson.output,
-                  try : true,
-                });
-              }
-              else alert('something else other than 200 was returned');
-            }
-          };
-
-          xmlhttp.open("POST", "url");
-          xmlhttp.send({
-            problemNumber : "??",
-            caseNumber : this.props.index,
-            language : "",
-            code : "",
+          this.setState({
+            success : false,
+            result : "rrrr",
+            try : true,
           });
+          // var xmlhttp = new XMLHttpRequest();
+          // xmlhttp.onreadystatechange = () => {
+          //   if (xmlhttp.readyState == XMLHttpRequest.DONE){
+          //     if (xmlhttp.status == 200){
+          //       var resultJson = JSON.parse(xmlhttp.responseText);
+          //       this.setState({
+          //         success : resultJson.success,
+          //         result : resultJson.output,
+          //         try : true,
+          //       });
+          //     }
+          //     else alert('something else other than 200 was returned');
+          //   }
+          // };
+
+          // xmlhttp.open("POST", "url");
+          // xmlhttp.send({
+          //   problemNumber : "??",
+          //   caseNumber : this.props.index,
+          //   language : "",
+          //   code : "",
+          // });
         }
 
         render() {
@@ -88,7 +101,7 @@
           }
 
           return (
-            <div style={{width: '600px'}}>
+            <div class="total">
               <div class={color}>
                 <span>예제 {this.props.index}</span>&nbsp;
                 {tried}
@@ -122,6 +135,9 @@
       const problem = <Problem index="1" img="https://miro.medium.com/max/12032/1*1X0-98EiQNkwBJj2vnTTqQ.jpeg" input="1&#13;&#10;2&#13;&#10;3&#13;&#10;4" output="1234"/>;
       const domContainer = document.querySelector('#react');
 			ReactDOM.render(problem, domContainer);
+      const problem1 = <Problem index="2" input="3&#13;&#10;2&#13;&#10;3&#13;&#10;4" output="1944"/>;
+      const domContainer1 = document.querySelector('#react1');
+			ReactDOM.render(problem1, domContainer1);
     </script>
   </body>
 </html>

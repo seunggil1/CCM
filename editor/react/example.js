@@ -53,7 +53,7 @@ class Example extends React.Component {
     }
 
     return (
-      <div style={{width: '400px'}}>
+      <div class="total">
         <div class={color}>
           <span>예제 {this.props.index}</span>&nbsp;
           {tried}
