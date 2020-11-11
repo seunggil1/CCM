@@ -29,11 +29,14 @@
     <script type="text/babel">
       const element = <EditorOption donwloadName="test.js"/>;
       setTimeout(() => {
+        var div = document.createElement("div");
+        div.setAttribute("id","editor_option");
+        document.getElementById('editor1').parentElement.appendChild(div);
         ReactDOM.render(
           element,
           document.getElementById('editor_option')
         );
-      },2000);
+      },1000);
     </script>
     <script src="./src/js/layout_const.js"></script>
     <script src="./src/js/layout.js"></script>
@@ -58,9 +61,6 @@
 						fontSize: 20,
 					}
         );
-        var div = document.createElement("div");
-        div.setAttribute("id","editor_option");
-        document.getElementById('editor1').appendChild(div);
       }
     </script>
   </head>
