@@ -56,14 +56,14 @@ var Example = function (_React$Component) {
     value: function render() {
       var tried = React.createElement("i", null);
       var imgTag,
-          color = "black";
+          color = "black exampleTitle";
       if (this.state.try) {
         if (this.state.success) {
           tried = React.createElement("i", { "class": "fas fa-check" });
-          color = "green";
+          color = "green exampleTitle";
         } else {
           tried = React.createElement("i", { "class": "fas fa-times" });
-          color = "red";
+          color = "red exampleTitle";
         }
       }
       if (this.props.img != null) {
@@ -72,7 +72,7 @@ var Example = function (_React$Component) {
 
       return React.createElement(
         "div",
-        { "class": "total" },
+        { "class": "exampleUnit" },
         React.createElement(
           "div",
           { "class": color },
@@ -96,15 +96,15 @@ var Example = function (_React$Component) {
           { "class": "horizontal" },
           React.createElement(
             "div",
-            { "class": "box rightLine" },
+            { "class": "subUnit rightLine" },
             React.createElement(
               "div",
-              { "class": "boxTitle" },
+              { "class": "subUnitTitle" },
               "\uC785\uB825"
             ),
             React.createElement(
               "div",
-              { "class": "boxContent" },
+              { "class": "subUnitContent" },
               this.props.input.split('\n').map(function (line) {
                 return React.createElement(
                   "span",
@@ -120,29 +120,29 @@ var Example = function (_React$Component) {
             { "class": "vertical" },
             React.createElement(
               "div",
-              { "class": "box" },
+              { "class": "subUnit" },
               React.createElement(
                 "div",
-                { "class": "boxTitle" },
+                { "class": "subUnitTitle" },
                 "\uCD9C\uB825"
               ),
               React.createElement(
                 "div",
-                { "class": "boxContent" },
+                { "class": "subUnitContent" },
                 this.props.output
               )
             ),
             React.createElement(
               "div",
-              { "class": "box" },
+              { "class": "subUnit" },
               React.createElement(
                 "div",
-                { "class": "boxTitle" },
+                { "class": "subUnitTitle" },
                 "\uACB0\uACFC"
               ),
               React.createElement(
                 "div",
-                { "class": "boxContent" },
+                { "class": "subUnitContent" },
                 this.state.result
               )
             )

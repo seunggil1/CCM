@@ -35,17 +35,17 @@ class Example extends React.Component {
     });
   }
 
-  render() {
+  render(){
     var tried = <i></i>;
-    var imgTag,color = "black";
+    var imgTag,color = "black exampleTitle";
     if(this.state.try){
       if(this.state.success){
         tried = <i class="fas fa-check"></i>;
-        color = "green";
+        color = "green exampleTitle";
       }
       else{
         tried = <i class="fas fa-times"></i>;
-        color = "red";
+        color = "red exampleTitle";
       }
     }
     if(this.props.img != null){
@@ -53,7 +53,7 @@ class Example extends React.Component {
     }
 
     return (
-      <div class="total">
+      <div class="exampleUnit">
         <div class={color}>
           <span>예제 {this.props.index}</span>&nbsp;
           {tried}
@@ -61,21 +61,21 @@ class Example extends React.Component {
         </div>
         <div>{imgTag}</div>
         <div class="horizontal">
-          <div class="box rightLine">
-            <div class="boxTitle">입력</div>
-            <div class="boxContent">{
+          <div class="subUnit rightLine">
+            <div class="subUnitTitle">입력</div>
+            <div class="subUnitContent">{
               this.props.input.split('\n').map( 
                 line => (<span>{line}<br/></span>))
             }</div>
           </div>
           <div class="vertical">
-            <div class="box">
-              <div class="boxTitle">출력</div>
-              <div class="boxContent">{this.props.output}</div>
+            <div class="subUnit">
+              <div class="subUnitTitle">출력</div>
+              <div class="subUnitContent">{this.props.output}</div>
             </div>
-            <div class="box">
-              <div class="boxTitle">결과</div>
-              <div class="boxContent">{this.state.result}</div>
+            <div class="subUnit">
+              <div class="subUnitTitle">결과</div>
+              <div class="subUnitContent">{this.state.result}</div>
             </div>
           </div>
         </div>

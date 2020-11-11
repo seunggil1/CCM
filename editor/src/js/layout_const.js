@@ -7,7 +7,7 @@ const editorComponent = {
 };
 const problemComponent = {
   type:'component',
-  componentName: 'example',
+  componentName: 'problem',
   title: 'problem',
   tooltip: '문제를 여기서 확인하세요',
   isClosable: false,
@@ -18,12 +18,26 @@ const exampleComponent = {
   title: 'example',
   tooltip: '여기서 실행해보세요',
   isClosable: false,
-  component: 'Example',
+  component: 'Examples',
   props : {
-    index :"1" ,
-    img :"https://miro.medium.com/max/12032/1*1X0-98EiQNkwBJj2vnTTqQ.jpeg" ,
-    input :"1\n2\n3\n4" ,
-    output :"1234",
+    list : [
+      {
+        index :"1" ,
+        img :"https://miro.medium.com/max/12032/1*1X0-98EiQNkwBJj2vnTTqQ.jpeg" ,
+        input :"1\n2\n3\n4" ,
+        output :"1234",
+      },
+      {
+        index :"2" ,
+        input :"3 5 3\n4 9 2\n3 5 1" ,
+        output :"4",
+      },
+      {
+        index :"3" ,
+        input :"1 392" ,
+        output :"123",
+      }
+    ],
   },
 };
 

@@ -1,12 +1,12 @@
 var myLayout = new GoldenLayout( layoutConfig );
 
-myLayout.registerComponent( 'example', function( container, state ){
+myLayout.registerComponent( 'problem', function( container, state ){
   container.getElement().html( '<h2>' + state.text + '</h2>');
 });
 myLayout.registerComponent( 'editor',function(container,state){
   container.getElement().html( '<div id="editor1" style="height: 100%; width:100%;"></div>');
 });
-myLayout.registerComponent( 'Example', Example);
+myLayout.registerComponent( 'Examples', Examples);
 
 myLayout.on('tabCreated', function( tab ){
   tab.element.attr('title', tab.contentItem.config.tooltip);
