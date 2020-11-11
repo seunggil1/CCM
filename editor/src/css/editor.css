@@ -1,0 +1,21 @@
+@font-face{
+  font-family: "Sansita Swashed";
+  src: url("../../asset/SansitaSwashed-VariableFont_wght.ttf") format("truetype");
+}
+
+h2{
+  font: 14px Arial, sans-serif;
+  color:#fff;
+  padding: 10px;
+  text-align: center;
+}
+#editor_option{
+  position: absolute;
+  top: 0px;
+  left: 15px;
+  color: white;
+  font-size: 25px;
+}
+.lm_content{
+  overflow: auto;
+}

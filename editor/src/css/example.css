@@ -1,0 +1,22 @@
+.horizontal{
+  display: grid; grid-template-columns: 50% 50%;
+  min-height: 200px;
+}
+.vertical{
+  display: grid; grid-template-rows: 50% 50%;
+}
+.box{
+  display: grid;
+  grid-template-rows: 30px auto;
+}
+.boxContent{
+  background-color: lightgrey;
+  height: auto;
+}
+.boxTitle{
+  border-bottom: 1px black solid;
+  text-align: center;
+}
+.rightLine{ border-right: 1px black solid; }
+.green{ color: #3ddc84; }
+.red{ color: red; }

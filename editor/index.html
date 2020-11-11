@@ -6,26 +6,8 @@
     <link type="text/css" rel="stylesheet" href="../node_modules/golden-layout/src/css/goldenlayout-dark-theme.css" />
 
     <link rel="stylesheet" data-name="vs/editor/editor.main" href="../node_modules/monaco-editor/min/vs/editor/editor.main.css"/>
-    <style>
-      @font-face{
-				font-family: "Sansita Swashed";
-				src: url("./asset/SansitaSwashed-VariableFont_wght.ttf") format("truetype");
-			}
-      
-      h2{
-        font: 14px Arial, sans-serif;
-        color:#fff;
-        padding: 10px;
-        text-align: center;
-      }
-      #editor_option{
-        position: absolute;
-        top: 0px;
-        left: 15px;
-        color: white;
-				font-size: 25px;
-      }
-    </style>
+    <link rel="stylesheet" href="./src/css/example.css">
+    <link rel="stylesheet" href="./src/css/editor.css">
     
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="../node_modules/golden-layout/dist/goldenlayout.min.js"></script>
@@ -41,9 +23,8 @@
 		<script src="../node_modules/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
 		<script src="../node_modules/monaco-editor/min/vs/editor/editor.main.js"></script>
     
-    <script src="./react/liktbutton.js"></script>
-    <script src="./react/problem.js"></script>
-    <script src="./react/editorOption.js"></script>
+    <script src="./src/js/react/example.js"></script>
+    <script src="./src/js/react/editorOption.js"></script>
     <script type="text/babel">
       const element = <EditorOption donwloadName="test.js"/>;
       setTimeout(() => {
@@ -53,77 +34,8 @@
         );
       },2000);
     </script>
-    <script>
-      var editorComponent = {
-        type:'component',
-        componentName: 'editor',
-        title: '코드이게 이렇게 길어지면?',
-        tooltip: '여기서 코드를 작성하세요',
-        isClosable: false,
-        // componentState: { text: 'Component 2' }
-      };
-      var config = {
-        settings:{
-          showPopoutIcon: false,
-          showMaximiseIcon: false,
-          showCloseIcon: false,
-          selectionEnabled: true,
-        },
-        dimensions: {
-          headerHeight: 34,
-        },
-        content: [{
-          type: 'stack', // Stack
-          content: [
-            editorComponent,
-            {
-              type:'component',
-              componentName: 'example',
-              title: '문제',
-              tooltip: '문제를 여기서 확인하세요',
-              isClosable: false,
-              componentState: { list: 'Component 1' }
-            },
-            {
-              type:'react-component',
-              title: '실행',
-              tooltip: '여기서 실행해보세요',
-              isClosable: false,
-              component: 'Problem',
-              props : {
-                index :"1" ,
-                img :"https://miro.medium.com/max/12032/1*1X0-98EiQNkwBJj2vnTTqQ.jpeg" ,
-                input :"1\n2\n3\n4" ,
-                output :"1234",
-              }
-            }
-          ]
-        }]
-      };
-
-      var myLayout = new GoldenLayout( config );
-
-      myLayout.registerComponent( 'example', function( container, state ){
-        container.getElement().html( '<h2>' + state.text + '</h2>');
-      });
-      myLayout.registerComponent( 'editor',function(container,state){
-        container.getElement().html( '<div id="editor1" style="height: 100%; width:100%;"></div>');
-      });
-      myLayout.registerComponent( 'Problem', Problem);
-
-      myLayout.on('tabCreated', function( tab ){
-        tab.element.attr('title', tab.contentItem.config.tooltip);
-      });
-      myLayout.on('initialised', function( tab ){
-        createEditor(['function x() {', '\tconsole.log("Hello world!");', '}'].join('\n'));
-      });
-      myLayout.on('stateChanged',function(some){
-        // console.log(some);
-        setTimeout( () => createEditor( editor1.getValue() ),1000);
-      });
-
-      myLayout.init();
-    </script>
+    <script src="./src/js/layout_const.js"></script>
+    <script src="./src/js/layout.js"></script>
     <script>
       var editor1;
       function createEditor(value){
