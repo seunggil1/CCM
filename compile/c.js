@@ -1,42 +1,34 @@
-const { exec } = require("child_process");
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
 const fs = require('fs');
 
-let child = exec("gcc a.c -o a.exe", (error, stdout, stderr) => {
-  if (error) {
-    console.log(`error: ${error.message}`);
-    return;
-  }
-  if (stderr) {
-    console.log(`stderr: ${stderr}`);
-    return;
-  }
-  
-  // child.
-  console.log('compile done');
-  exec("a.exe < input.txt",(error,stdout,stderr) => {
-    if (error) {
-      console.log(`error: ${error.message}`);
-      return;
-    }
-    if (stderr) {
-      console.log(`stderr: ${stderr}`);
-      return;
-    }
-    
-    check(stdout);
-  });
-});
+async function compile_run(inFile){
+  var compile = await exec("gcc a.c -o a.exe");
+  var run = await exec(`a.exe < ${inFile}`);
 
-function check(stdout){
-  fs.readFile('./ans.txt', 'utf8' ,(err, data) => {
-    if (err){
-      console.error(err)
-      return;
-    }
+  // if(compile.stderr || run.stderr){
+  //   console.log(compile.stderr);
+  //   console.log(run.stderr);
 
-    // console.log(data);
-    // console.log(stdout);
-    if(data == stdout) console.log('correct');
-    else console.log('wrong');
-  });
+  //   return {
+  //     compileError: compile.stderr,
+  //     runtimeError: run.stderr
+  //   };
+  // }
+  return run.stdout;
+}
+function compare(stdout,outFile){
+  var ans = fs.readFileSync(outFile,'utf-8');
+
+  return (stdout == ans);
+}
+
+exports.check = async (inFile,outFile) => {
+  var runResult = await compile_run(inFile);
+  var checkResult = compare(runResult,outFile);
+
+  return {
+    result : runResult,
+    state : checkResult
+  };
 }

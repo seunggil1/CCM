@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function send(){
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = () => {
+          if (xmlhttp.readyState == XMLHttpRequest.DONE){
+            if (xmlhttp.status == 200){
+              // var resultJson = JSON.parse(xmlhttp.responseText);
+              console.log(xmlhttp.responseText);
+            }
+            else alert('something else other than 200 was returned');
+          }
+        };
+
+        xmlhttp.open("POST", "/exec");
+        xmlhttp.setRequestHeader('Content-Type', 'application/json');
+        xmlhttp.send(JSON.stringify(
+          {
+            problemNum : "1",
+            caseNum : 1,
+            lang : "c",
+            code : `#include <stdio.h>
+
+int main(){
+  int a,b;
+  scanf("%d",&a);
+  scanf("%d",&b);
+  printf("%d",a+b);
+
+  return 0;
+}`
+          })
+        );
+      }
+    </script>
+  </head>
+  <body>
+    <div onclick="send();">버튼</div>
+  </body>
+</html>
