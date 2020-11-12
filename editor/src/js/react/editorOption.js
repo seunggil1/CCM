@@ -23,7 +23,7 @@ var EditorOption = function (_React$Component) {
     value: function copy() {
       console.log("copyed");
       var content = document.createElement("textarea");
-      content.value = editor1.getValue();
+      content.value = editor.getValue();
 
       document.body.appendChild(content);
       content.select();
@@ -34,7 +34,7 @@ var EditorOption = function (_React$Component) {
     key: "download",
     value: function download() {
       var filename = this.props.donwloadName;
-      var content = 'data:text/plain;charset=utf-8,' + encodeURIComponent(editor1.getValue());
+      var content = 'data:text/plain;charset=utf-8,' + encodeURIComponent(editor.getValue());
       var element = document.createElement('a');
       element.setAttribute('href', content);
       element.setAttribute('download', filename);

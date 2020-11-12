@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" data-name="vs/editor/editor.main" href="../node_modules/monaco-editor/min/vs/editor/editor.main.css"/>
-    <link rel="stylesheet" href="./src/css/example.css">
-    <link rel="stylesheet" href="./src/css/editor.css">
+    <link rel="stylesheet" href="./editor/src/css/example.css">
+    <link rel="stylesheet" href="./editor/src/css/editor.css">
     
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="../node_modules/golden-layout/dist/goldenlayout.min.js"></script>
@@ -18,34 +18,36 @@
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
     
     <script>
-			var require = { paths: { vs: '../node_modules/monaco-editor/min/vs' } };
+      var require = { paths: { vs: '../node_modules/monaco-editor/min/vs' } };
+      var programLang = 'c';
+      var problemNum = 1;
 		</script>
 		<script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
 		<script src="../node_modules/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
 		<script src="../node_modules/monaco-editor/min/vs/editor/editor.main.js"></script>
     
-    <script src="./src/js/react/example.js"></script>
-    <script src="./src/js/react/examples.js"></script>
-    <script src="./src/js/react/editorOption.js"></script>
+    <script src="./editor/src/js/react/example.js"></script>
+    <script src="./editor/src/js/react/examples.js"></script>
+    <script src="./editor/src/js/react/editorOption.js"></script>
     <script type="text/babel">
       const element = <EditorOption donwloadName="test.js"/>;
       setTimeout(() => {
         var div = document.createElement("div");
         div.setAttribute("id","editor_option");
-        document.getElementById('editor1').parentElement.appendChild(div);
+        document.getElementById('editor').parentElement.appendChild(div);
         ReactDOM.render(
           element,
           document.getElementById('editor_option')
         );
       },1000);
     </script>
-    <script src="./src/js/layout_const.js"></script>
-    <script src="./src/js/layout.js"></script>
+    <script src="./editor/src/js/layout_const.js"></script>
+    <script src="./editor/src/js/layout.js"></script>
     <script>
-      var editor1;
+      var editor;
       function createEditor(value){
-				editor1 = monaco.editor.create(
-					document.getElementById('editor1'),
+				editor = monaco.editor.create(
+					document.getElementById('editor'),
 					{
 						value: value,
             // abap,aes,apex,azcli,bat,c,cameligo,clojure,coffeescript,cpp,csharp,csp,css,
@@ -54,7 +56,7 @@
             // pascaligo,perl,pgsql,php,plaintext,postiats,powerquery,powershell,pug,python,
             // r,razor,redis,redshift,restructuredtext,ruby,rust,sb,scala,scheme,scss,shell,
             // sol,sql,st,swift,systemverilog,tcl,twig,typescript,vb,verilog,xml,yaml
-						language: 'javascript',
+						language: 'c',
 						// theme: 'vs',
 						theme: 'vs-dark',
 						tabSize: 2,

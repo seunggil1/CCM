@@ -43,13 +43,15 @@ var Example = function (_React$Component) {
         }
       };
 
-      xmlhttp.open("POST", "url");
-      xmlhttp.send({
-        problemNumber: "??",
-        caseNumber: this.props.index,
-        language: "",
-        code: ""
-      });
+      var data = {
+        problemNum: problemNum,
+        caseNum: this.props.index,
+        lang: programLang,
+        code: editor.getValue()
+      };
+      xmlhttp.open("POST", "/exec");
+      xmlhttp.setRequestHeader('Content-Type', 'application/json');
+      xmlhttp.send(JSON.stringify(data));
     }
   }, {
     key: "render",

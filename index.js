@@ -4,6 +4,7 @@ const app = express();
 const fs = require('fs');
 
 app.use(bodyParser.json());
+app.use(express.static('.'));
 // app.use("/pnu/cse",cse);
 
 app.post("/exec",async (req,res) => {
@@ -21,7 +22,7 @@ app.post("/exec",async (req,res) => {
   res.send(result);
 });
 
-app.get('/',(req,res) => res.sendFile(__dirname + '/editor/test.html'));
+app.get('/',(req,res) => res.sendFile(__dirname + '/editor/index.html'));
 
 app.listen(4000,() => {
   console.log("server is running");

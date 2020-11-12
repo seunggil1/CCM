@@ -12,7 +12,7 @@ exports.check = async (code,inFile,outFile) => {
   await fs.unlink('a.c');
   await fs.unlink('a.exe');
   return {
-    result : run.stdout,
-    state : (run.stdout == readFile)
+    output : run.stdout,
+    success : (run.stdout == readFile)
   };
 }
