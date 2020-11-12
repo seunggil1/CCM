@@ -1,31 +1,21 @@
-const { exec } = require("child_process");
-const fs = require('fs')
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
+const fs = require('fs').promises;
 
+// do it(error check);
+exports.check = async (code,inFile,outFile) => {
+  var readFile = await fs.readFile(outFile,'utf-8');
+  var writefile = await fs.writeFile('a.py',code);
 
-exec("a.py < input.txt",(error,stdout,stderr) => {
-  if (error) {
-    console.log(`error: ${error.message}`);
-    return;
-  }
-  if (stderr) {
-    console.log(`stderr: ${stderr}`);
-    return;
-  }
+  var pre_time = Date.now();
+  var run = await exec(`a.py < ${inFile}`);
+  var cur_time = Date.now();
   
-  // console.log(stdout);
-  // check(stdout);
-});
-
-function check(stdout){
-  fs.readFile('./ans.txt', 'utf8' ,(err, data) => {
-    if (err){
-      console.error(err)
-      return;
-    }
-
-    // console.log(data);
-    // console.log(stdout);
-    if(data == stdout) console.log('correct');
-    else console.log('wrong');
-  });
+  await fs.unlink('a.c');
+  await fs.unlink('a.exe');
+  return {
+    time : cur_time - pre_time,
+    output : run.stdout,
+    success : (run.stdout == readFile)
+  };
 }

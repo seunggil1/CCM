@@ -6,12 +6,21 @@ const editorComponent = {
   isClosable: false,
 };
 const problemComponent = {
-  type:'component',
-  componentName: 'problem',
+  type:'react-component',
   title: 'problem',
   tooltip: '문제를 여기서 확인하세요',
   isClosable: false,
-  componentState: { list: 'Component 1' }
+  component: "Problem",
+  props : {
+    title : "더하기",
+    problem : "C 언어를 활용하여 두 수 a 와 b를 입력받아 더한 결과를 출력하는 코드를 작성하시오",
+    input : "두 수 a와 b가 공백을 기준으로 주어진다.",
+    output : "두 수를 더한 결과를 출력하여라",
+    condition : [
+      "-10 <= a <= 100",
+      "-30 < b <= 25"
+    ]
+  }
 };
 const exampleComponent = {
   type:'react-component',

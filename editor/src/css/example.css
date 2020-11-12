@@ -1,12 +1,12 @@
 body{
   color: white;
 }
-.exampleUnit{
+.e_Unit{
   margin: 20px 30px;
   width: 600px;
   border: 2px white solid;
 }
-.exampleTitle{
+.e_Title{
   padding: 10px 20px;
   font-size: larger;
 }
@@ -17,15 +17,15 @@ body{
 .vertical{
   display: grid; grid-template-rows: 50% 50%;
 }
-.subUnit{
+.e_subUnit{
   display: grid;
   position: relative;
   grid-template-rows: 30px auto;
 }
-.subUnitContent{
+.e_subUnitContent{
   margin: auto;
 }
-.subUnitTitle{
+.e_subUnitTitle{
   border-bottom: 1px #eee solid;
   border-top: 1px #eee solid;
   text-align: center;

@@ -1,8 +1,6 @@
 var myLayout = new GoldenLayout( layoutConfig );
 
-myLayout.registerComponent( 'problem', function( container, state ){
-  container.getElement().html( '<h2>' + state.text + '</h2>');
-});
+myLayout.registerComponent( 'Problem', Problem);
 myLayout.registerComponent( 'editor',function(container,state){
   container.getElement().html( '<div id="editor" style="height: 100%; width:100%;"></div>');
 });

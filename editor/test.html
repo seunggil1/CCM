@@ -35,8 +35,51 @@ int main(){
         );
       }
     </script>
+    <style>
+      .p_subUnit{
+        margin-top: 25px;
+      }
+      .p_subUnitTitle{
+        font-size: larger;
+        padding: 0px 5px 5px 5px;
+        border-bottom: 2px solid skyblue;
+        width: fit-content;
+      }
+      .p_subUnitContent{
+        padding-top: 5px;
+        border-top: 1px solid grey;
+        max-width: 700px;
+      }
+    </style>
   </head>
   <body>
-    <div onclick="send();">버튼</div>
+    <!-- <div onclick="send();">버튼</div> -->
+    <div>
+      <h2>더하기(문제 제목)</h2>
+
+      <div class="p_subUnit">
+        <div class="p_subUnitTitle">문제</div>
+        <div class="p_subUnitContent">C 언어를 활용하여 두 수 a 와 b를 입력받아 더한 결과를 출력하는 코드를 작성하시오</div>
+      </div>
+      <div class="p_subUnit">
+        <div class="p_subUnitTitle">입력</div>
+        <div class="p_subUnitContent">
+          두 수 a와 b가 공백을 기준으로 주어진다.
+        </div>
+      </div>
+      <div class="p_subUnit">
+        <div class="p_subUnitTitle">출력</div>
+        <div class="p_subUnitContent">
+          두 수를 더한 결과를 출력하여라
+        </div>
+      </div>
+      <div class="p_subUnit">
+        <div class="p_subUnitTitle">조건</div>
+        <div class="p_subUnitContent">
+          <div>-10 &#60;&#61; a &#60;&#61; 100</div>
+          <div>-10 &#60;&#61; b &#60;&#61; 100</div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

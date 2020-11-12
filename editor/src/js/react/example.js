@@ -17,6 +17,7 @@ var Example = function (_React$Component) {
     _this.state = {
       success: false,
       result: "",
+      time: "",
       try: false
     };
 
@@ -37,6 +38,7 @@ var Example = function (_React$Component) {
             _this2.setState({
               success: resultJson.success,
               result: resultJson.output,
+              time: resultJson.time,
               try: true
             });
           } else alert('something else other than 200 was returned');
@@ -56,16 +58,19 @@ var Example = function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var tried = React.createElement("i", null);
       var imgTag,
-          color = "black exampleTitle";
+          timeTake = "",
+          color = "black e_Title";
+      var tried = React.createElement("i", null);
       if (this.state.try) {
         if (this.state.success) {
           tried = React.createElement("i", { "class": "fas fa-check" });
-          color = "green exampleTitle";
+          color = "green e_Title";
+          timeTake = " ( " + this.state.time + " ms )";
         } else {
           tried = React.createElement("i", { "class": "fas fa-times" });
-          color = "red exampleTitle";
+          color = "red e_Title";
+          timeTake = " ( " + this.state.time + " ms )";
         }
       }
       if (this.props.img != null) {
@@ -74,7 +79,7 @@ var Example = function (_React$Component) {
 
       return React.createElement(
         "div",
-        { "class": "exampleUnit" },
+        { "class": "e_Unit" },
         React.createElement(
           "div",
           { "class": color },
@@ -98,15 +103,15 @@ var Example = function (_React$Component) {
           { "class": "horizontal" },
           React.createElement(
             "div",
-            { "class": "subUnit rightLine" },
+            { "class": "e_subUnit rightLine" },
             React.createElement(
               "div",
-              { "class": "subUnitTitle" },
+              { "class": "e_subUnitTitle" },
               "\uC785\uB825"
             ),
             React.createElement(
               "div",
-              { "class": "subUnitContent" },
+              { "class": "e_subUnitContent" },
               this.props.input.split('\n').map(function (line) {
                 return React.createElement(
                   "span",
@@ -122,29 +127,30 @@ var Example = function (_React$Component) {
             { "class": "vertical" },
             React.createElement(
               "div",
-              { "class": "subUnit" },
+              { "class": "e_subUnit" },
               React.createElement(
                 "div",
-                { "class": "subUnitTitle" },
+                { "class": "e_subUnitTitle" },
                 "\uC815\uB2F5"
               ),
               React.createElement(
                 "div",
-                { "class": "subUnitContent" },
+                { "class": "e_subUnitContent" },
                 this.props.output
               )
             ),
             React.createElement(
               "div",
-              { "class": "subUnit" },
+              { "class": "e_subUnit" },
               React.createElement(
                 "div",
-                { "class": "subUnitTitle" },
-                "\uACB0\uACFC"
+                { "class": "e_subUnitTitle" },
+                "\uACB0\uACFC",
+                timeTake
               ),
               React.createElement(
                 "div",
-                { "class": "subUnitContent" },
+                { "class": "e_subUnitContent" },
                 this.state.result
               )
             )

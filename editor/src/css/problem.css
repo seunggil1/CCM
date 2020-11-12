@@ -1,0 +1,16 @@
+.p_subUnit{
+  margin-top: 25px;
+  margin-left: 15px;
+}
+.p_subUnitTitle{
+  font-size: larger;
+  padding: 0px 5px 5px 5px;
+  border-bottom: 2px solid skyblue;
+  width: fit-content;
+}
+.p_subUnitContent{
+  padding-top: 5px;
+  padding-left: 10px;
+  border-top: 1px solid grey;
+  max-width: 700px;
+}

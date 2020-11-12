@@ -4,6 +4,7 @@ class Example extends React.Component {
     this.state = {
       success: false,
       result : "",
+      time: "",
       try: false,
     };
 
@@ -19,6 +20,7 @@ class Example extends React.Component {
           this.setState({
             success : resultJson.success,
             result : resultJson.output,
+            time : resultJson.time,
             try : true,
           });
         }
@@ -38,16 +40,18 @@ class Example extends React.Component {
   }
 
   render(){
+    var imgTag,timeTake = "",color = "black e_Title";
     var tried = <i></i>;
-    var imgTag,color = "black exampleTitle";
     if(this.state.try){
       if(this.state.success){
         tried = <i class="fas fa-check"></i>;
-        color = "green exampleTitle";
+        color = "green e_Title";
+        timeTake = ` ( ${this.state.time} ms )`;
       }
       else{
         tried = <i class="fas fa-times"></i>;
-        color = "red exampleTitle";
+        color = "red e_Title";
+        timeTake = ` ( ${this.state.time} ms )`;
       }
     }
     if(this.props.img != null){
@@ -55,7 +59,7 @@ class Example extends React.Component {
     }
 
     return (
-      <div class="exampleUnit">
+      <div class="e_Unit">
         <div class={color}>
           <span>예제 {this.props.index}</span>&nbsp;
           {tried}
@@ -63,21 +67,21 @@ class Example extends React.Component {
         </div>
         <div>{imgTag}</div>
         <div class="horizontal">
-          <div class="subUnit rightLine">
-            <div class="subUnitTitle">입력</div>
-            <div class="subUnitContent">{
+          <div class="e_subUnit rightLine">
+            <div class="e_subUnitTitle">입력</div>
+            <div class="e_subUnitContent">{
               this.props.input.split('\n').map( 
                 line => (<span>{line}<br/></span>))
             }</div>
           </div>
           <div class="vertical">
-            <div class="subUnit">
-              <div class="subUnitTitle">정답</div>
-              <div class="subUnitContent">{this.props.output}</div>
+            <div class="e_subUnit">
+              <div class="e_subUnitTitle">정답</div>
+              <div class="e_subUnitContent">{this.props.output}</div>
             </div>
-            <div class="subUnit">
-              <div class="subUnitTitle">결과</div>
-              <div class="subUnitContent">{this.state.result}</div>
+            <div class="e_subUnit">
+              <div class="e_subUnitTitle">결과{timeTake}</div>
+              <div class="e_subUnitContent">{this.state.result}</div>
             </div>
           </div>
         </div>

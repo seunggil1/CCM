@@ -4,14 +4,19 @@ const fs = require('fs').promises;
 
 // do it(error check);
 exports.check = async (code,inFile,outFile) => {
+  var readFile = await fs.readFile(outFile,'utf-8');
   var writefile = await fs.writeFile('a.c',code);
   var compile = await exec("gcc a.c -o a.exe");
+
+  var pre_time = Date.now();
   var run = await exec(`a.exe < ${inFile}`);
-  var readFile = await fs.readFile(outFile,'utf-8');
+  var cur_time = Date.now();
+  
   
   await fs.unlink('a.c');
   await fs.unlink('a.exe');
   return {
+    time : cur_time - pre_time,
     output : run.stdout,
     success : (run.stdout == readFile)
   };
