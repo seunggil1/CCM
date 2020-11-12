@@ -24,13 +24,13 @@ const exampleComponent = {
       {
         index :"1" ,
         img :"https://miro.medium.com/max/12032/1*1X0-98EiQNkwBJj2vnTTqQ.jpeg" ,
-        input :"1\n2\n3\n4" ,
-        output :"1234",
+        input :"2\n4" ,
+        output :"6",
       },
       {
         index :"2" ,
-        input :"3 5 3\n4 9 2\n3 5 1" ,
-        output :"4",
+        input :"4 5" ,
+        output :"8",
       },
       {
         index :"3" ,

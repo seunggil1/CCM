@@ -126,7 +126,7 @@ var Example = function (_React$Component) {
               React.createElement(
                 "div",
                 { "class": "subUnitTitle" },
-                "\uCD9C\uB825"
+                "\uC815\uB2F5"
               ),
               React.createElement(
                 "div",

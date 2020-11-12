@@ -72,7 +72,7 @@ class Example extends React.Component {
           </div>
           <div class="vertical">
             <div class="subUnit">
-              <div class="subUnitTitle">출력</div>
+              <div class="subUnitTitle">정답</div>
               <div class="subUnitContent">{this.props.output}</div>
             </div>
             <div class="subUnit">
