@@ -11,8 +11,7 @@ exports.check = async (code,inFile,outFile) => {
   var run = await exec(`a.py < ${inFile}`);
   var cur_time = Date.now();
   
-  await fs.unlink('a.c');
-  await fs.unlink('a.exe');
+  await fs.unlink('a.py');
   return {
     time : cur_time - pre_time,
     output : run.stdout,

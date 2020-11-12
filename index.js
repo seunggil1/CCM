@@ -1,7 +1,6 @@
 const bodyParser = require('body-parser');
 const express = require("express");
 const app = express();
-const fs = require('fs');
 
 app.use(bodyParser.json());
 app.use(express.static('.'));
