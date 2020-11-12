@@ -31,7 +31,7 @@ class Example extends React.Component {
     var data = {
       problemNum : problemNum,
       caseNum : this.props.index,
-      lang : programLang,
+      lang : langExtensionMap[programLang],
       code : editor.getValue(),
     }
     xmlhttp.open("POST", "/exec");
@@ -40,17 +40,17 @@ class Example extends React.Component {
   }
 
   render(){
-    var imgTag,timeTake = "",color = "black e_Title";
+    var imgTag,timeTake = "",color = "black e_UnitTitle";
     var tried = <i></i>;
     if(this.state.try){
       if(this.state.success){
         tried = <i class="fas fa-check"></i>;
-        color = "green e_Title";
+        color = "green e_UnitTitle";
         timeTake = ` ( ${this.state.time} ms )`;
       }
       else{
         tried = <i class="fas fa-times"></i>;
-        color = "red e_Title";
+        color = "red e_UnitTitle";
         timeTake = ` ( ${this.state.time} ms )`;
       }
     }

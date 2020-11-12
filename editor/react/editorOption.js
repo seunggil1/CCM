@@ -16,7 +16,7 @@ class EditorOption extends React.Component{
   }
 
   download(){
-    var filename = this.props.donwloadName;
+    var filename = this.props.donwloadName + '.' + langExtensionMap[programLang];
     var content = 'data:text/plain;charset=utf-8,' + encodeURIComponent(editor.getValue());
     var element = document.createElement('a');
     element.setAttribute('href', content);

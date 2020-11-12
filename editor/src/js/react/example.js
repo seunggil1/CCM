@@ -48,7 +48,7 @@ var Example = function (_React$Component) {
       var data = {
         problemNum: problemNum,
         caseNum: this.props.index,
-        lang: programLang,
+        lang: langExtensionMap[programLang],
         code: editor.getValue()
       };
       xmlhttp.open("POST", "/exec");
@@ -60,16 +60,16 @@ var Example = function (_React$Component) {
     value: function render() {
       var imgTag,
           timeTake = "",
-          color = "black e_Title";
+          color = "black e_UnitTitle";
       var tried = React.createElement("i", null);
       if (this.state.try) {
         if (this.state.success) {
           tried = React.createElement("i", { "class": "fas fa-check" });
-          color = "green e_Title";
+          color = "green e_UnitTitle";
           timeTake = " ( " + this.state.time + " ms )";
         } else {
           tried = React.createElement("i", { "class": "fas fa-times" });
-          color = "red e_Title";
+          color = "red e_UnitTitle";
           timeTake = " ( " + this.state.time + " ms )";
         }
       }

@@ -22,6 +22,9 @@
       var require = { paths: { vs: '../node_modules/monaco-editor/min/vs' } };
       var programLang = 'c';
       var problemNum = 1;
+      const langExtensionMap = {
+        c : 'c',cpp : 'cpp',python : 'py',javascript : 'js'
+      };
 		</script>
 		<script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
 		<script src="../node_modules/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
@@ -32,7 +35,7 @@
     <script src="./editor/src/js/react/problem.js"></script>
     <script src="./editor/src/js/react/editorOption.js"></script>
     <script type="text/babel">
-      const element = <EditorOption donwloadName="add.c"/>;
+      const element = <EditorOption donwloadName="add"/>;
       setTimeout(() => {
         var div = document.createElement("div");
         div.setAttribute("id","editor_option");
@@ -41,6 +44,8 @@
           element,
           document.getElementById('editor_option')
         );
+
+        document.getElementsByClassName("lm_header lm_selectable")[0];
       },1000);
     </script>
     <script src="./editor/src/js/layout_const.js"></script>
@@ -58,7 +63,7 @@
             // pascaligo,perl,pgsql,php,plaintext,postiats,powerquery,powershell,pug,python,
             // r,razor,redis,redshift,restructuredtext,ruby,rust,sb,scala,scheme,scss,shell,
             // sol,sql,st,swift,systemverilog,tcl,twig,typescript,vb,verilog,xml,yaml
-						language: 'c',
+						language: programLang,
 						// theme: 'vs',
 						theme: 'vs-dark',
 						tabSize: 2,
@@ -67,10 +72,25 @@
 					}
         );
       }
+
+      function langChange(){
+        var sel = document.getElementById("programLangSelct");
+        var new_lang = sel.options[sel.selectedIndex].value;
+        programLang = new_lang;
+
+        document.getElementById("editor").innerHTML = '';
+        createEditor('');        
+      }
     </script>
   </head>
   <body>
-
+    <div style="display: none;">
+      <select name="programLang" id="programLangSelct" onchange="langChange();">
+        <option value="c">c</option>
+        <option value="cpp">cpp</option>
+        <option value="python">python</option>
+      </select>
+    </div>
   </body>
 </html>
 <!-- http://golden-layout.com/ -->
