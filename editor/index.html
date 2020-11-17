@@ -4,7 +4,8 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link type="text/css" rel="stylesheet" href="../node_modules/golden-layout/src/css/goldenlayout-base.css" />
     <link type="text/css" rel="stylesheet" href="../node_modules/golden-layout/src/css/goldenlayout-dark-theme.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"> -->
 
     <link rel="stylesheet" data-name="vs/editor/editor.main" href="../node_modules/monaco-editor/min/vs/editor/editor.main.css"/>
     <link rel="stylesheet" href="./editor/src/css/example.css">
@@ -64,10 +65,12 @@
             // r,razor,redis,redshift,restructuredtext,ruby,rust,sb,scala,scheme,scss,shell,
             // sol,sql,st,swift,systemverilog,tcl,twig,typescript,vb,verilog,xml,yaml
 						language: programLang,
-						// theme: 'vs',
+						// theme: 'vs', //light version
 						theme: 'vs-dark',
 						tabSize: 2,
-						// fontFamily: 'Sansita Swashed',
+						fontFamily: 'Consolas',
+						// fontFamily: 'D2Coding',
+						// fontFamily: 'IBM Plex Mono',
 						fontSize: 20,
 					}
         );
@@ -89,6 +92,11 @@
         <option value="c">c</option>
         <option value="cpp">cpp</option>
         <option value="python">python</option>
+      </select>
+      <select name="font" id="fontSelect" onchange="fontChange();">
+        <option value="D2Coding" style="font-family: D2Coding;">D2Coding</option>
+        <option value="Consolas" style="font-family: Consolas;">Consolas</option>
+        <option value="IBM Plex Mono" style="font-family: IBM Plex Mono;">IBM Plex Mono</option>
       </select>
     </div>
   </body>

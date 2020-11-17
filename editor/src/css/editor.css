@@ -1,7 +1,15 @@
 @font-face{
-  font-family: "Sansita Swashed";
-  src: url("../../asset/SansitaSwashed-VariableFont_wght.ttf") format("truetype");
+  font-family: "D2Coding";
+  src: url("../../asset/D2Coding-Ver1.3.2-20180524-all.ttc") format("truetype");
 }
+@font-face{
+  font-family: "IBM Plex Mono";
+  src: url("../../asset/IBMPlexMono-Regular.ttf") format("truetype");
+}
+/* @font-face{
+  font-family: "D2Coding";
+  src: url("../../asset/D2CodingAll/D2Coding-Ver1.3.2-20180524-all.ttc") format("truetype");
+} */
 
 h2{
   font: 14px Arial, sans-serif;

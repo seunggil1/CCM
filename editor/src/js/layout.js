@@ -9,18 +9,20 @@ myLayout.registerComponent( 'Examples', Examples);
 myLayout.on('tabCreated', function( tab ){
   tab.element.attr('title', tab.contentItem.config.tooltip);
 });
-myLayout.on('initialised', function( tab ){
-  createEditor(['#include <stdio.h>','int main(){','\tint a,b;','\tscanf("%d",&a);','\tscanf("%d",&b);','\tprintf("%d",a+b);','\treturn 0;','}'].join('\n'));
-  document.getElementById("editor").parentElement.style.overflow = "unset";
-});
 myLayout.on('stateChanged',function(some){
   var editorValue = editor.getValue();
   document.getElementById("editor").innerHTML = '';
   createEditor( editorValue );
 });
 myLayout.on('stackCreated', function( stack ){
-  var dropdown = document.getElementById("programLangSelct");
-  stack.header.controlsContainer.prepend( dropdown );
+  createEditor(['#include <stdio.h>','int main(){','\tint a,b;','\tscanf("%d",&a);','\tscanf("%d",&b);','\tprintf("%d",a+b);','\treturn 0;','}'].join('\n'));
+  document.getElementById("editor").parentElement.style.overflow = "unset";
+
+
+  var langSelect = document.getElementById("programLangSelct");
+  stack.header.controlsContainer.prepend( langSelect );
+  var fontSelect = document.getElementById("fontSelect");
+  stack.header.controlsContainer.prepend( fontSelect );
 })
 
 myLayout.init();
