@@ -2,52 +2,36 @@
 
 VS code의 거의 모든 단축키들을 웹에서 쓸 수 있는 온라인 코드 에디터입니다.
 페이지 자체에 탭이 있어서 각각 탭별로 에디터/문제/예제 를 보여줄 수 있습니다.
-또 탭들의 위치 및 크기조절이 자유로워 
+또 탭들의 위치 및 크기조절이 자유로워 편리하게 작업할 수 있다
+
 
 ## 요구사항
 
-프로젝트 실행에 필수적인 것들을 적어주세요.
-editor/react/origianl 디렉토리에 react js 클래스를 선언하고
-아래의 명령어를 통해 브라우저가 이해할 수 있는 js 파일로
-editor/react 디렉토리에 컴파일 한다
-npx babel --watch editor/react  --out-dir editor/src/js/react --presets react-app/prod
+컴파일 및 실행을 원하는 언어의 언어 또는 컴파일러가 설치되어 있어야 한다.
 
-- Node.js >= 14
-- CUDA >= 11.1
 
 ## 설치방법
 
-npm install monaco-editor
-npm install golden-layout
-npm install child_process
-npm install babel-cli@6 babel-preset-react-app@3
+npm install
+
+OS에 상관없이 컴파일 및 실행을 원하는 언어의 컴파일러나 언어 자체가 설치되어 있어야 한다.
+
 
 ### Windows
-
-설치 과정을 순서대로 작성하세요.
-
-```
-$ swift install packageName
-```
-
+C언어 : mingw가 설치 및 환경변수 설정이 되어있어야 한다.
+python : python이 설치 및 환경변수 성정이 되어있어야 한다.
 ### Linux
 
-```
-$ apt install packageName
-```
 
 ## 참여인원
+- 이창주, busbtvi@naver.com, 개발자
+- 강승길, ksgg1@naver.com, 개발자
 
-- 이창주, busbtvi@naver.com, 메인 개발자
-- 강승길, 이메일2, 역할2
 
 ## 참고
+- VSCode editor : monaco-editor, https://microsoft.github.io/monaco-editor/
+- layout : golden-layout, https://golden-layout.com/
 
-- A 프로젝트, 링크
-- B 논문, 링크
-- C 교재, 링크
 
 ## 라이센스
-
-- 해당 프로젝트의 라이센스를 표기해주세요.
-- GNU 라이센스의 경우 CCM에 적용할 수 없으므로, CCM 관련 참여자들은 GNU 라이센스가 아닌 다른 라이센스를 적용해주세요.
+- LGPL

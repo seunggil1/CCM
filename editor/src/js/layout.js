@@ -17,6 +17,9 @@ myLayout.on('stateChanged',function(some){
 myLayout.on('stackCreated', function( stack ){
   createEditor(['#include <stdio.h>','int main(){','\tint a,b;','\tscanf("%d",&a);','\tscanf("%d",&b);','\tprintf("%d",a+b);','\treturn 0;','}'].join('\n'));
   document.getElementById("editor").parentElement.style.overflow = "unset";
+
+  var langSelect = document.getElementById("programLangSelct");
+  stack.header.controlsContainer.prepend( langSelect );
 })
 
 myLayout.init();
