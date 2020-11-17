@@ -15,6 +15,11 @@ class EditorOption extends React.Component{
     document.body.removeChild(content);
   }
 
+  setting(){
+    document.getElementById("editorSetting").style.display = "";
+    document.getElementById("editorSettingBox").style.display = "block";
+  }
+
   download(){
     var filename = this.props.donwloadName + '.' + langExtensionMap[programLang];
     var content = 'data:text/plain;charset=utf-8,' + encodeURIComponent(editor.getValue());
@@ -31,7 +36,8 @@ class EditorOption extends React.Component{
     return (
       <div>
         <i class="far fa-copy" onClick={this.copy}></i><br/>
-        <i class="fas fa-file-download" onClick={this.download}></i>
+        <i class="fas fa-file-download" onClick={this.download}></i><br/>
+        <i class="fas fa-cog" onClick={this.setting}></i>
       </div>
     );
   }

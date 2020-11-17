@@ -31,6 +31,12 @@ var EditorOption = function (_React$Component) {
       document.body.removeChild(content);
     }
   }, {
+    key: "setting",
+    value: function setting() {
+      document.getElementById("editorSetting").style.display = "";
+      document.getElementById("editorSettingBox").style.display = "block";
+    }
+  }, {
     key: "download",
     value: function download() {
       var filename = this.props.donwloadName + '.' + langExtensionMap[programLang];
@@ -51,7 +57,9 @@ var EditorOption = function (_React$Component) {
         null,
         React.createElement("i", { "class": "far fa-copy", onClick: this.copy }),
         React.createElement("br", null),
-        React.createElement("i", { "class": "fas fa-file-download", onClick: this.download })
+        React.createElement("i", { "class": "fas fa-file-download", onClick: this.download }),
+        React.createElement("br", null),
+        React.createElement("i", { "class": "fas fa-cog", onClick: this.setting })
       );
     }
   }]);

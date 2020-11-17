@@ -1,52 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script>
-      function send(){
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = () => {
-          if (xmlhttp.readyState == XMLHttpRequest.DONE){
-            if (xmlhttp.status == 200){
-              var resultJson = JSON.parse(xmlhttp.responseText);
-              console.log(resultJson);
-            }
-            else alert('something else other than 200 was returned');
-          }
-        };
-
-        xmlhttp.open("POST", "/exec");
-        xmlhttp.setRequestHeader('Content-Type', 'application/json');
-        xmlhttp.send(JSON.stringify(
-          {
-            problemNum : "1",
-            caseNum : 2,
-            lang : "c",
-            code : `#include <stdio.h>
-
-int main(){
-  int a,b;
-  scanf("%d",&a);
-  scanf("%d",&b);
-  printf("%d",a+b);
-
-  return 0;
-}`
-          })
-        );
-      }
-    </script>
     <style>
       .setting{
-        max-width: 200px;
+        max-width: 220px;
       }
       .settingUnit{
         display: flex;
         justify-content: space-between;
-        /* grid-template-columns: 80px auto; */
       }
       .settingResult{
         text-align: center;
         height: 50px;
+        line-height: 50px;
+      }
+      .settingButton{
+        display: grid;
+        grid-template-columns: auto auto;
+      }
+      .settingButton > div{
+        text-align: center;
+        background-color: gray;
+        border-right: 2px solid white;
+      }
+      select{
+        width: 120px;
       }
     </style>
   </head>
@@ -88,6 +66,13 @@ int main(){
       <div class="settingResult">
         result
       </div>
+      <div class="settingButton">
+        <div>취소</div>
+        <div>적용</div>
+      </div>
     </div>
+
+    <div id="aa"></div>
+    <script type="text/babel"></script>
   </body>
 </html>

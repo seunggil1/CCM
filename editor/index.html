@@ -34,9 +34,11 @@
     <script src="./editor/src/js/react/example.js"></script>
     <script src="./editor/src/js/react/examples.js"></script>
     <script src="./editor/src/js/react/problem.js"></script>
+    <script src="./editor/src/js/react/editorSetting.js"></script>
     <script src="./editor/src/js/react/editorOption.js"></script>
     <script type="text/babel">
       const element = <EditorOption donwloadName="add"/>;
+      const setting = <EditorSetting />;
       setTimeout(() => {
         var div = document.createElement("div");
         div.setAttribute("id","editor_option");
@@ -44,6 +46,10 @@
         ReactDOM.render(
           element,
           document.getElementById('editor_option')
+        );
+        ReactDOM.render(
+          setting,
+          document.getElementById('editorSettingBox')
         );
 
         document.getElementsByClassName("lm_header lm_selectable")[0];
@@ -53,7 +59,7 @@
     <script src="./editor/src/js/layout.js"></script>
     <script>
       var editor;
-      function createEditor(value){
+      function createEditor(value,fontSize = 20,fontFamily = "Consolas"){
 				editor = monaco.editor.create(
 					document.getElementById('editor'),
 					{
@@ -68,10 +74,10 @@
 						// theme: 'vs', //light version
 						theme: 'vs-dark',
 						tabSize: 2,
-						fontFamily: 'Consolas',
+						fontFamily: fontFamily,
 						// fontFamily: 'D2Coding',
 						// fontFamily: 'IBM Plex Mono',
-						fontSize: 20,
+						fontSize: fontSize,
 					}
         );
       }
@@ -87,18 +93,7 @@
     </script>
   </head>
   <body>
-    <div style="display: none;">
-      <select name="programLang" id="programLangSelct" onchange="langChange();">
-        <option value="c">c</option>
-        <option value="cpp">cpp</option>
-        <option value="python">python</option>
-      </select>
-      <select name="font" id="fontSelect" onchange="fontChange();">
-        <option value="D2Coding" style="font-family: D2Coding;">D2Coding</option>
-        <option value="Consolas" style="font-family: Consolas;">Consolas</option>
-        <option value="IBM Plex Mono" style="font-family: IBM Plex Mono;">IBM Plex Mono</option>
-      </select>
-    </div>
+    <div id="editorSettingBox"></div>
   </body>
 </html>
 <!-- http://golden-layout.com/ -->

@@ -6,7 +6,7 @@
     <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./src/css/example.css">
+    <link rel="stylesheet" href="./src/css/editor.css">
     <style>
       /* body{
         font-family: 'Noto Sans KR', sans-serif;
@@ -43,6 +43,7 @@
     <div id="react1"></div>
     <script src="./src/js/react/example.js"></script>
     <script src="./src/js/react/examples.js"></script>
+    <script src="./src/js/react/editorSetting.js"></script>
     <script type="text/babel">
       // class Problem extends React.Component {
       //   constructor(props) {
@@ -141,11 +142,12 @@
       // const problem1 = <Problem index="2" input="3&#13;&#10;2&#13;&#10;3&#13;&#10;4" output="1944"/>;
       // const domContainer1 = document.querySelector('#react1');
 			// ReactDOM.render(problem1, domContainer1);
-      const examples = <Examples list={
-        [{index: 1,input: "1111",output:"11 11"},
-        {index: 2,input: "2222",output:"22 22",img:"https://miro.medium.com/max/12032/1*1X0-98EiQNkwBJj2vnTTqQ.jpeg"},
-        {index: 3,input: "3333",output:"33 33"}]
-      }/>
+      // const examples = <Examples list={
+      //   [{index: 1,input: "1111",output:"11 11"},
+      //   {index: 2,input: "2222",output:"22 22",img:"https://miro.medium.com/max/12032/1*1X0-98EiQNkwBJj2vnTTqQ.jpeg"},
+      //   {index: 3,input: "3333",output:"33 33"}]
+      // }/>
+      const examples = <EditorSetting />;
       const domContainer = document.querySelector('#react1');
 			ReactDOM.render(examples, domContainer);
     </script>
