@@ -23,6 +23,15 @@ python : python이 설치 및 환경변수 성정이 되어있어야 한다.
 ### Linux
 
 
+## 실행방법
+
+node index.js
+
+브라우저에서 localhost:4000 으로 접속
+editor 탭에서 코드작성
+example 탭에서 예제에 있는 실행버튼 클릭
+
+
 ## 참여인원
 - 이창주, busbtvi@naver.com, 개발자
 - 강승길, ksgg1@naver.com, 개발자
