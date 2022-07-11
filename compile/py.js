@@ -8,7 +8,7 @@ exports.check = async (code,inFile,outFile) => {
   var writefile = await fs.writeFile('a.py',code);
 
   var pre_time = Date.now();
-  var run = await exec(`a.py < ${inFile}`);
+  var run = await exec(`./a.py < ${inFile}`);
   var cur_time = Date.now();
   
   await fs.unlink('a.py');
