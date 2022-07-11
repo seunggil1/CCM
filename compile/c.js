@@ -10,7 +10,7 @@ exports.check = async (code,inFile,outFile) => {
   var compile = await exec("gcc a.c");
 
   var pre_time = Date.now();
-  var run = await exec(`a.out < ${inFile}`);
+  var run = await exec(`./a.out < ${inFile}`);
   var cur_time = Date.now();
   
   
