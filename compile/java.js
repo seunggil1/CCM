@@ -17,10 +17,11 @@ exports.check = async (code,inputData,answerData) => {
     };
   }
 
+  const compileOption = require('./compileOption.js');
   try {
     await exec("javac -d . -encoding UTF-8 -g:lines -g:vars -g:source -Xlint:deprecation Main.java");
     let pre_time = Date.now();
-    let run = await exec(`java -cp . Main < ./input.in`);
+    let run = await exec(`java -cp . Main < ./input.in`, { timeout: compileOption.timeLimit });
     let cur_time = Date.now();
 
     try { // 사용한 파일 제거
@@ -34,20 +35,26 @@ exports.check = async (code,inputData,answerData) => {
       success : (run.stdout.trim() == answerData)
     };
 
-  } catch (error) { // 컴파일, 런타임 오류
-    console.log(error);
+  } catch (error) { // 시간 초과 or 컴파일, 런타임 오류
     try {
       await fs.unlink('Main.java');
       await fs.unlink('Main.class');
     } catch (error) {
       console.log(error);
-     }
+    }
 
-    return {
-      time : 0,
-      output : error.stderr,
-      success : false
-    };
-
+    if(error.killed){
+      return {
+        time : compileOption.timeLimit,
+        output : compileOption.timeLimitMessage,
+        success : false
+      };
+    }else{
+      return {
+        time : 0,
+        output : error.stderr,
+        success : false
+      };
+    }
   }
 }

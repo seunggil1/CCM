@@ -6,7 +6,7 @@ const fs = require('fs').promises;
 exports.check = async (code,inputData,answerData) => {
   let sourceFile;
   try {
-    sourceFile = await fs.writeFile('main.c',code);
+    sourceFile = await fs.writeFile('main.cpp',code);
     await fs.writeFile('./input.in', inputData);
   } catch (error) { // 파일 쓰기 실패
     console.log(error);
@@ -19,13 +19,13 @@ exports.check = async (code,inputData,answerData) => {
 
   const compileOption = require('./compileOption.js');
   try {
-    await exec("gcc -finput-charset=UTF-8 main.c");
+    await exec("g++ -finput-charset=UTF-8 main.cpp");
     let pre_time = Date.now();
     let run = await exec(`./a.out < ./input.in`, { timeout: compileOption.timeLimit });
     let cur_time = Date.now();
 
     try { // 사용한 파일 제거
-      await fs.unlink('main.c');
+      await fs.unlink('main.cpp');
       await fs.unlink('a.out');
       await fs.unlink('input.in');
     } catch (error) { console.log(error); }
@@ -38,7 +38,7 @@ exports.check = async (code,inputData,answerData) => {
 
   } catch (error) { // 시간 초과 or 컴파일, 런타임 오류
     try {
-      await fs.unlink('main.c');
+      await fs.unlink('main.cpp');
       await fs.unlink('a.out');
       await fs.unlink('input.in');
     } catch (error) {
