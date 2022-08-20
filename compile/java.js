@@ -21,7 +21,7 @@ exports.check = async (code,inputData,answerData) => {
   try {
     await exec("javac -d . -encoding UTF-8 -g:lines -g:vars -g:source -Xlint:deprecation Main.java");
     let pre_time = Date.now();
-    let run = await exec(`java -cp . Main < ./input.in`, { timeout: compileOption.timeLimit });
+    let run = await exec(`java -cp . Main < ./input.in`, { timeout: compileOption.timeLimit * 2 + 1 });
     let cur_time = Date.now();
 
     try { // 사용한 파일 제거
