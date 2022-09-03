@@ -28,6 +28,7 @@ exports.check = async (code,inputData,answerData) => {
       await fs.unlink('input.in');
     } catch (error) { console.log(error); }
 
+    console.log(run);
     return {
       time : cur_time - pre_time,
       output : run.stdout,
