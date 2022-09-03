@@ -46,6 +46,7 @@ exports.check = async (code,inputData,answerData) => {
      }
 
     if(error.killed){
+      console.log(error);
       return {
         time : compileOption.timeLimit,
         output : compileOption.timeLimitMessage,
