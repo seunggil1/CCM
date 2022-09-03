@@ -21,7 +21,7 @@ exports.check = async (code,inputData,answerData) => {
   try {
     await exec("gcc -finput-charset=UTF-8 main.c");
     let pre_time = Date.now();
-    let run = await exec(`./a.out < ./input.in`, { timeout: compileOption.timeLimit });
+    let run = await exec(`/usr/bin/time -v ./a.out < ./input.in`, { timeout: compileOption.timeLimit });
     let cur_time = Date.now();
 
     try { // 사용한 파일 제거
@@ -29,7 +29,7 @@ exports.check = async (code,inputData,answerData) => {
       await fs.unlink('a.out');
       await fs.unlink('input.in');
     } catch (error) { console.log(error); }
-
+    console.log(run);
     return {
       time : cur_time - pre_time,
       output : run.stdout,
