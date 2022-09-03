@@ -37,6 +37,7 @@ exports.check = async (code,inputData,answerData) => {
     };
 
   } catch (error) { // 시간 초과 or 컴파일, 런타임 오류
+    console.log(error);
     try {
       await fs.unlink('main.c');
       await fs.unlink('a.out');
@@ -46,7 +47,6 @@ exports.check = async (code,inputData,answerData) => {
      }
 
     if(error.killed){
-      console.log(error);
       return {
         time : compileOption.timeLimit,
         output : compileOption.timeLimitMessage,
