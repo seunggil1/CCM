@@ -29,7 +29,6 @@ exports.check = async (code,inputData,answerData) => {
       await fs.unlink('a.out');
       await fs.unlink('input.in');
     } catch (error) { console.log(error); }
-    console.log(run);
     return {
       time : cur_time - pre_time,
       output : run.stdout,
@@ -37,7 +36,6 @@ exports.check = async (code,inputData,answerData) => {
     };
 
   } catch (error) { // 시간 초과 or 컴파일, 런타임 오류
-    console.log(error);
     try {
       await fs.unlink('main.c');
       await fs.unlink('a.out');
