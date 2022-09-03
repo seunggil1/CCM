@@ -20,7 +20,7 @@ exports.check = async (code,inputData,answerData) => {
   const compileOption = require('./compileOption.js');
   try {
     let pre_time = Date.now();
-    let run = await exec(`node ./main.js < ./input.in`, { timeout: compileOption.timeLimit * 3 + 2 });
+    let run = await exec(`/usr/bin/time node ./main.js < ./input.in`, { timeout: compileOption.timeLimit * 3 + 2 });
     let cur_time = Date.now();
 
     try { // 사용한 파일 제거
@@ -31,7 +31,8 @@ exports.check = async (code,inputData,answerData) => {
     return {
       time : cur_time - pre_time,
       output : run.stdout,
-      success : (run.stdout.trim() == answerData)
+      success : (run.stdout.trim() == answerData),
+      test : run
     };
 
   } catch (error) { // 시간 초과 or 런타임 오류
