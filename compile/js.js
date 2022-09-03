@@ -20,7 +20,7 @@ exports.check = async (code,inputData,answerData) => {
   const compileOption = require('./compileOption.js');
   try {
     let pre_time = Date.now();
-    let run = await exec(`/usr/bin/time node ./main.js < ./input.in`, { timeout: compileOption.timeLimit * 3 + 2 });
+    let run = await exec(`/usr/bin/time -v node ./main.js < ./input.in`, { timeout: compileOption.timeLimit * 3 + 2 });
     let cur_time = Date.now();
 
     try { // 사용한 파일 제거
