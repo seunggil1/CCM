@@ -14,9 +14,7 @@
     "body-parser": "^1.20.0",
     "child_process": "^1.0.2",
     "express": "^4.18.1",
-    "golden-layout": "^2.5.0",
     "install": "^0.13.0",
-    "monaco-editor": "^0.33.0",
     "util": "^0.12.4"
   }
 }
